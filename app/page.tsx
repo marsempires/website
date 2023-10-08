@@ -20,7 +20,7 @@ export default function Home() {
         <Image src={'/logo.webp'} alt="Mars Empires Logo" className="shine-effect" width={100} height={100} />
       </div>
 
-      <div className="relative h-full rounded-[32px] bg-red-200 overflow-hidden">
+      <div className="relative h-full rounded-[32px] overflow-hidden">
         <Galaxy />
         <InformationPanel />
 
@@ -28,8 +28,6 @@ export default function Home() {
           <Scene />
         </Canvas>
       </div>
-
-      {/* <WhitelistButton /> */}
     </main>
   )
 }
