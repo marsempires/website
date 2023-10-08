@@ -1,5 +1,4 @@
 import { useSfx } from '@/hooks/use-sfx'
-import React from 'react'
 
 export default function WhitelistButton() {
   const { playHover } = useSfx()

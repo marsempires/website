@@ -1,8 +1,8 @@
-import * as THREE from 'three'
-import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
-import { GLTF } from 'three-stdlib'
 import { useFrame } from '@react-three/fiber'
+import { useRef } from 'react'
+import * as THREE from 'three'
+import { GLTF } from 'three-stdlib'
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -19,7 +19,7 @@ export function TurbineShort(props: JSX.IntrinsicElements['group']) {
   const { nodes, materials } = useGLTF('/models/turbine-short.glb') as GLTFResult
 
   useFrame((_, delta) => {
-    if (propeller.current) propeller.current.rotation.z += delta * 10
+    if (propeller.current) propeller.current.rotation.z += delta * 12
   })
 
   return (

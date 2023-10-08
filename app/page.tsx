@@ -1,11 +1,13 @@
 'use client'
 
+import Camera from '@/components/camera'
 import Cursor from '@/components/cursor'
 import Dust from '@/components/dust'
 import Galaxy from '@/components/galaxy'
+import InformationPanel from '@/components/information-panel'
+import { Model } from '@/components/map-current-merged'
 import { Mars } from '@/components/mars'
 import WhitelistButton from '@/components/whitelist-button'
-import { PerspectiveCamera } from '@react-three/drei'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { easing } from 'maath'
 import Image from 'next/image'
@@ -21,6 +23,9 @@ export default function Home() {
       </div>
       <div className="relative h-full rounded-[32px] bg-red-200 overflow-hidden">
         <Galaxy />
+
+        <InformationPanel />
+
         <Canvas shadows>
           <Scene />
         </Canvas>
@@ -31,14 +36,12 @@ export default function Home() {
 }
 
 function Scene() {
-  useFrame((state, delta) => {
-    easing.damp3(state.camera.position, [state.mouse.x / 2, 8 + state.mouse.y / 3, 30.5], 0.5, delta)
-  })
-
   return (
     <>
-      <PerspectiveCamera rotation={[-0.25, 0, 0]} makeDefault position={[0, 8, 30]} fov={30} />
-      <Dust count={20} radius={80} colors={['white']} />
+      <Camera />
+
+      <Dust count={30} radius={80} colors={['white']} />
+
       <Mars />
 
       <directionalLight color={new Color('#7E30D8')} position={[0, 7, 10]} intensity={4} castShadow />

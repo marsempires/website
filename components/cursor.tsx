@@ -10,8 +10,6 @@ export default function Cursor() {
     pointerY: 0,
   })
 
-  const root = document.body
-
   let previousPointerX = 0
   let previousPointerY = 0
   let angle = 0
@@ -49,8 +47,8 @@ export default function Cursor() {
 
     previousPointerX = position.current.pointerX
     previousPointerY = position.current.pointerY
-    position.current.pointerX = event.pageX + root.getBoundingClientRect().x
-    position.current.pointerY = event.pageY + root.getBoundingClientRect().y
+    position.current.pointerX = event.pageX + document.body.getBoundingClientRect().x
+    position.current.pointerY = event.pageY + document.body.getBoundingClientRect().y
     position.current.distanceX = previousPointerX - position.current.pointerX
     position.current.distanceY = previousPointerY - position.current.pointerY
     const distance = Math.sqrt(position.current.distanceY ** 2 + position.current.distanceX ** 2)
