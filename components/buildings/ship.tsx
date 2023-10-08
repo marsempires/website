@@ -1,8 +1,7 @@
-import { Html, useGLTF } from '@react-three/drei'
+import { useInformationPanel } from '@/hooks/use-information-panel'
+import { useGLTF } from '@react-three/drei'
 import { GLTF } from 'three-stdlib'
-import React, { useState } from 'react'
-import { useSfx } from '@/hooks/use-sfx'
-import Annotation from './annotation'
+import Annotation from '../annotation'
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -16,13 +15,7 @@ type GLTFResult = GLTF & {
 }
 export default function Ship() {
   const { nodes, materials } = useGLTF('/models/map-current-merged.glb') as GLTFResult
-  const { playHover } = useSfx()
-  const [isFocus, setIsFocus] = useState(false)
-
-  const handleClicked = () => {
-    setIsFocus(!isFocus)
-    open()
-  }
+  const setSelected = useInformationPanel((s) => s.setSelected)
 
   return (
     <>
@@ -42,8 +35,15 @@ export default function Ship() {
           />
         </group>
 
-        <Annotation position={[0, 2.5, -1.5]}>
-          <svg width="107" height="107" viewBox="0 0 107 107" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <Annotation text="Thunder Ship" position={[0, 2.5, -1.5]} onClick={() => setSelected('ship')}>
+          <svg
+            className="w-20 h-20"
+            width="107"
+            height="107"
+            viewBox="0 0 107 107"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <mask
               id="mask0_10_60"
               style={{ maskType: 'alpha' }}

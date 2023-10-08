@@ -5,11 +5,9 @@ import Cursor from '@/components/cursor'
 import Dust from '@/components/dust'
 import Galaxy from '@/components/galaxy'
 import InformationPanel from '@/components/information-panel'
-import { Model } from '@/components/map-current-merged'
 import { Mars } from '@/components/mars'
-import WhitelistButton from '@/components/whitelist-button'
-import { Canvas, useFrame } from '@react-three/fiber'
-import { easing } from 'maath'
+import { Canvas } from '@react-three/fiber'
+import { DepthOfField, EffectComposer, N8AO } from '@react-three/postprocessing'
 import Image from 'next/image'
 import { Color } from 'three'
 
@@ -18,19 +16,21 @@ export default function Home() {
     <main className="relative w-screen h-screen p-6 pt-10 bg-white">
       <div className="background-grid"></div>
       <Cursor />
+
       <div className="absolute z-10 left-[50%] translate-x-[-50%] w-fit h-fit overflow-hidden rounded-xl top-4 shine-effect">
         <Image src={'/logo.webp'} alt="Mars Empires Logo" className="shine-effect" width={100} height={100} />
       </div>
+
       <div className="relative h-full rounded-[32px] bg-red-200 overflow-hidden">
         <Galaxy />
-
         <InformationPanel />
 
         <Canvas shadows>
           <Scene />
         </Canvas>
       </div>
-      <WhitelistButton />
+
+      {/* <WhitelistButton /> */}
     </main>
   )
 }

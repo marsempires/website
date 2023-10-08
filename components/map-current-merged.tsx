@@ -1,8 +1,8 @@
 import { useGLTF } from '@react-three/drei'
 import * as THREE from 'three'
 import { GLTF } from 'three-stdlib'
-import { Farm } from './farm'
-import { Lander } from './lander'
+import { Farm } from './buildings/farm'
+import { Lander } from './buildings/lander'
 import { TurbineShort } from './turbine-short'
 import { TurbineTall } from './turbine-tall'
 

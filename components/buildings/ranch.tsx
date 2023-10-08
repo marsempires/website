@@ -1,65 +1,60 @@
+import { useInformationPanel } from '@/hooks/use-information-panel'
 import { useGLTF } from '@react-three/drei'
 import * as THREE from 'three'
 import { GLTF } from 'three-stdlib'
-import Annotation from './annotation'
+import Annotation from '../annotation'
+import { Farm } from './farm'
 
 type GLTFResult = GLTF & {
   nodes: {
-    Cylinder035: THREE.Mesh
-    structure_tall002: THREE.Mesh
-    basemodule_E001: THREE.Mesh
-    Cylinder034: THREE.Mesh
-    Cylinder034_1: THREE.Mesh
-    Cylinder034_2: THREE.Mesh
-    tunnel_straight_A001: THREE.Mesh
-    tunnel_diagonal_long_A: THREE.Mesh
-    basemodule_garage: THREE.Mesh
-    basemodule_B002: THREE.Mesh
-    basemodule_B003: THREE.Mesh
-    basemodule_C006: THREE.Mesh
-    roofmodule_solarpanels: THREE.Mesh
-    structure_low: THREE.Mesh
+    Cylinder035_1: THREE.Mesh
+    Cylinder035_2: THREE.Mesh
+    Cylinder052: THREE.Mesh
   }
   materials: {
     Glass: THREE.MeshStandardMaterial
-    ['spacebits_texture.010']: THREE.MeshStandardMaterial
+    ['spacebits_texture.044']: THREE.MeshStandardMaterial
   }
 }
 
-export default function Basement() {
+export default function Ranch() {
   const { nodes, materials } = useGLTF('/models/map-current-merged.glb') as GLTFResult
+  const setSelected = useInformationPanel((s) => s.setSelected)
 
   return (
-    <group>
+    <group position={[2.5, 1, 14.294]}>
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.Cylinder035.geometry}
-        material={materials['spacebits_texture.010']}
-        position={[-1.083, 3.083, -13.084]}
-        scale={1.071}
+        geometry={nodes.Cylinder052.geometry}
+        material={materials['spacebits_texture.044']}
       />
-
+      <Farm position={[0, 0, -2]} />
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.structure_tall002.geometry}
-        material={materials['spacebits_texture.010']}
-        position={[-1.083, 0.994, -12.974]}
-        scale={1.071}
+        position={[0, -1, -2]}
+        geometry={nodes.Cylinder035_1.geometry}
+        material={materials.Glass}
       />
-
+      <Farm position={[2, 0, -2]} />
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.basemodule_E001.geometry}
-        material={materials['spacebits_texture.010']}
-        position={[-1.083, 4.101, -13.155]}
-        rotation={[0, -0.788, 0]}
-        scale={1.071}
+        position={[2, -1, -2]}
+        geometry={nodes.Cylinder035_1.geometry}
+        material={materials.Glass}
+      />
+      <Farm position={[2, 0, 0]} />
+      <mesh
+        castShadow
+        receiveShadow
+        position={[2, -1, 0]}
+        geometry={nodes.Cylinder035_1.geometry}
+        material={materials.Glass}
       />
 
-      <Annotation position={[-2.1, 8.8, -3]}>
+      <Annotation text="Oxygen Farm" position={[0, 3, 0]} onClick={() => setSelected('ranch')}>
         <svg
           className="w-20 h-20"
           width="107"
@@ -69,7 +64,7 @@ export default function Basement() {
           xmlns="http://www.w3.org/2000/svg"
         >
           <mask
-            id="mask0_10_67"
+            id="mask0_10_74"
             style={{ maskType: 'alpha' }}
             maskUnits="userSpaceOnUse"
             x="14"
@@ -84,11 +79,11 @@ export default function Basement() {
               stroke-width="1.04808"
             />
           </mask>
-          <g mask="url(#mask0_10_67)">
+          <g mask="url(#mask0_10_74)">
             <rect x="67.5498" width="78" height="78" transform="rotate(60 67.5498 0)" fill="white" />
           </g>
           <mask
-            id="mask1_10_67"
+            id="mask1_10_74"
             style={{ maskType: 'alpha' }}
             maskUnits="userSpaceOnUse"
             x="17"
@@ -102,123 +97,67 @@ export default function Basement() {
               stroke="black"
             />
           </mask>
-          <g mask="url(#mask1_10_67)">
+          <g mask="url(#mask1_10_74)">
             <rect
               x="66.6211"
               y="4"
               width="72"
               height="72"
               transform="rotate(60 66.6211 4)"
-              fill="url(#paint0_linear_10_67)"
+              fill="url(#paint0_linear_10_74)"
             />
           </g>
           <path
-            d="M48.5246 41.9166L44.4805 55.0937L51.5577 56.1073L48.5246 68.2708L61.668 53.0665L53.5797 51.0392L59.6459 41.9166H48.5246Z"
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M53 53L60.5 45.5C60.5 41.3579 57.1421 38 53 38C48.8579 38 45.5 41.3579 45.5 45.5L53 53Z"
             stroke="white"
             stroke-width="3.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M45.5 60.5L53 53L45.5 45.5C41.3579 45.5 38 48.8579 38 53C38 57.1421 41.3579 60.5 45.5 60.5Z"
+            stroke="white"
+            stroke-width="3.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M60.5 60.5C64.6421 60.5 68 57.1421 68 53C68 48.8579 64.6421 45.5 60.5 45.5L53 53L60.5 60.5Z"
+            stroke="white"
+            stroke-width="3.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M53 68C57.1421 68 60.5 64.6421 60.5 60.5L53 53L45.5 60.5C45.5 64.6421 48.8579 68 53 68Z"
+            stroke="white"
+            stroke-width="3.5"
+            stroke-linecap="round"
             stroke-linejoin="round"
           />
           <defs>
             <linearGradient
-              id="paint0_linear_10_67"
+              id="paint0_linear_10_74"
               x1="102.621"
               y1="4"
               x2="102.621"
               y2="76"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="#ED777C" />
-              <stop offset="1" stop-color="#ED7C36" />
+              <stop stop-color="#46ABD2" />
+              <stop offset="1" stop-color="#1792B0" />
             </linearGradient>
           </defs>
         </svg>
       </Annotation>
-
-      <group position={[-5.191, 4.011, -13.046]} scale={1.071}>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Cylinder034.geometry}
-          material={materials['spacebits_texture.010']}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Cylinder034_1.geometry}
-          material={materials['spacebits_texture.010']}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Cylinder034_2.geometry}
-          material={materials['spacebits_texture.010']}
-        />
-      </group>
-
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.tunnel_straight_A001.geometry}
-        material={materials['spacebits_texture.010']}
-        position={[-3.134, 3.016, -13.044]}
-        scale={1.071}
-      />
-
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.tunnel_diagonal_long_A.geometry}
-        material={materials['spacebits_texture.010']}
-        position={[0.904, 4.237, -11.077]}
-      />
-
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.basemodule_garage.geometry}
-        material={materials['spacebits_texture.010']}
-        position={[2.921, 0.987, -9.099]}
-        scale={[1, 1.094, 1]}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.basemodule_B002.geometry}
-        material={materials['spacebits_texture.010']}
-        position={[2.921, 3.503, -9.128]}
-        scale={[1, 1.094, 1]}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.basemodule_B003.geometry}
-        material={materials['spacebits_texture.010']}
-        position={[-5.185, 3, -13.035]}
-        scale={1.058}
-        rotation={[0, 1.55, 0]}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.basemodule_C006.geometry}
-        material={materials['spacebits_texture.010']}
-        position={[2.92, 4.542, -9.211]}
-        scale={[1, 1.094, 1]}
-      />
-      <mesh
-        geometry={nodes.roofmodule_solarpanels.geometry}
-        material={materials['spacebits_texture.010']}
-        position={[2.92, 3.203, -9.2]}
-        scale={[1.429, 1.562, 1.429]}
-      />
-
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.structure_low.geometry}
-        material={materials['spacebits_texture.010']}
-        position={[2.957, 2.026, -9.149]}
-      />
     </group>
   )
 }

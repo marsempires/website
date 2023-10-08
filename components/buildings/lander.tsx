@@ -1,12 +1,10 @@
 import { useInformationPanel } from '@/hooks/use-information-panel'
-import { useSfx } from '@/hooks/use-sfx'
-import { Html, useGLTF } from '@react-three/drei'
-import { useFrame, useThree } from '@react-three/fiber'
-import { easing } from 'maath'
-import { useRef, useState } from 'react'
+import { useGLTF } from '@react-three/drei'
+import { useFrame } from '@react-three/fiber'
+import { useRef } from 'react'
 import * as THREE from 'three'
 import { GLTF } from 'three-stdlib'
-import Annotation from './annotation'
+import Annotation from '../annotation'
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -21,13 +19,10 @@ type GLTFResult = GLTF & {
 export function Lander(props: JSX.IntrinsicElements['group']) {
   const radar = useRef<THREE.Mesh>(null)
   const { nodes, materials } = useGLTF('/models/lander.glb') as GLTFResult
-
-  const { camera } = useThree()
+  const setSelected = useInformationPanel((s) => s.setSelected)
 
   useFrame((_, delta) => {
     if (radar.current) radar.current.rotation.y += delta / 2
-
-    // isFocus && easing.damp3(camera.position, [-0.5, 1, 14], 0.5, delta)
   })
 
   return (
@@ -40,7 +35,7 @@ export function Lander(props: JSX.IntrinsicElements['group']) {
         position={[0.107, 0.831, 0]}
       />
 
-      <Annotation position={[-0.25, 1.45, -0.25]}>
+      <Annotation text="Atlantic Lander" position={[-0.25, 1.5, 0]} onClick={() => setSelected('lander')}>
         <svg width="127" height="127" viewBox="0 0 127 127" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g filter="url(#filter0_d_10_59)">
             <mask

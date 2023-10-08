@@ -357,3 +357,34 @@ button:is(:hover, :focus-visible) path {
   inline-size: 1em;
   translate: -25% -5%;
 }
+
+.lander-gradient {
+  background: linear-gradient(180deg, #ef4c65 0%, #f88fa7 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.ship-gradient {
+  background: linear-gradient(180deg, #e3b881 0%, #f09a4d 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.drill-gradient {
+  background: linear-gradient(180deg, #9595b6 0%, #706c97 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.ranch-gradient {
+  background: linear-gradient(180deg, #46abd2 0%, #1792b0 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.basement-gradient {
+  background: linear-gradient(180deg, #ed777c 0%, #ed7c36 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

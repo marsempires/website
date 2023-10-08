@@ -1,12 +1,13 @@
 import { useGLTF } from '@react-three/drei'
 import * as THREE from 'three'
 import { GLTF } from 'three-stdlib'
-import Basement from './basement'
-import { Lander } from './lander'
-import Ranch from './ranch'
-import Ship from './ship'
+import Basement from './buildings/basement'
+import { Lander } from './buildings/lander'
+import Ranch from './buildings/ranch'
+import Ship from './buildings/ship'
 import { TurbineShort } from './turbine-short'
 import { TurbineTall } from './turbine-tall'
+import { Drills } from '@/components/buildings/drills'
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -364,13 +365,14 @@ export function Mars(props: JSX.IntrinsicElements['group']) {
           material={materials['spacebits_texture.010']}
         />
       </group>
-      <mesh
+      {/* <mesh
         castShadow
         receiveShadow
         geometry={nodes.drill_structure001.geometry}
         material={materials['spacebits_texture.010']}
         position={[-10.392, 1, 0.044]}
-      />
+      /> */}
+      <Drills position={[-10.392, 1, 0.044]} />
 
       <mesh
         castShadow

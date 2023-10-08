@@ -1,1 +1,1 @@
-export type Building = 'lander'
+export type Building = 'lander' | 'ship' | 'ranch' | 'drill' | 'basement'

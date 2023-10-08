@@ -6,7 +6,8 @@ interface InformationPanelState {
   open: () => void
   close: () => void
 
-  selected: Building
+  selected: Building | undefined
+  setSelected: (building: Building | undefined) => void
 }
 
 export const useInformationPanel = create<InformationPanelState>()((set) => ({
@@ -14,5 +15,6 @@ export const useInformationPanel = create<InformationPanelState>()((set) => ({
   open: () => set({ opening: true }),
   close: () => set({ opening: false }),
 
-  selected: 'lander',
+  selected: undefined,
+  setSelected: (building: Building | undefined) => set({ selected: building }),
 }))
