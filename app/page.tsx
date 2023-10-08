@@ -24,8 +24,8 @@ export default function Home() {
         <Canvas shadows>
           <Scene />
         </Canvas>
-        <WhitelistButton />
       </div>
+      <WhitelistButton />
     </main>
   )
 }
