@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  cursor: none;
+}
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+
+  --background-url: '';
+  --background-width: 1920px;
+  --background-height: 400px;
+
+  --cursor-bg: #ffffff;
+  --cursor-bg-line: #eef1f4;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+@-webkit-keyframes bg-scrolling-reverse {
+  100% {
+    background-position: var(--background-width) var(--background-height);
+  }
+}
+@-moz-keyframes bg-scrolling-reverse {
+  100% {
+    background-position: var(--background-width) var(--background-height);
+  }
+}
+@-o-keyframes bg-scrolling-reverse {
+  100% {
+    background-position: var(--background-width) var(--background-height);
+  }
+}
+@keyframes bg-scrolling-reverse {
+  100% {
+    background-position: var(--background-width) var(--background-height);
+  }
+}
+
+@-webkit-keyframes bg-scrolling {
+  0% {
+    background-position: var(--background-width) var(--background-height);
+  }
+}
+@-moz-keyframes bg-scrolling {
+  0% {
+    background-position: var(--background-width) var(--background-height);
+  }
+}
+@-o-keyframes bg-scrolling {
+  0% {
+    background-position: var(--background-width) var(--background-height);
+  }
+}
+@keyframes bg-scrolling {
+  0% {
+    background-position: var(--background-width) var(--background-height);
+  }
+}
+
+.infinite-animated-background {
+  background: url('/galaxy.webp') repeat 0 0;
+  -webkit-animation: bg-scrolling-reverse 220s infinite;
+  -moz-animation: bg-scrolling-reverse 220s infinite;
+  -o-animation: bg-scrolling-reverse 220s infinite;
+  animation: bg-scrolling-reverse 220s infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  -o-animation-timing-function: linear;
+  animation-timing-function: linear;
+}
+
+.background-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-size: 40px 40px;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: var(--cursor-bg);
+  background-image: linear-gradient(var(--cursor-bg-line) 1px, transparent 1px),
+    linear-gradient(to right, var(--cursor-bg-line) 1px, var(--cursor-bg) 1px);
+}
+
+@layer components {
+  .shine-effect::before {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100%;
+    background-image: linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0) 30%,
+      rgba(255, 255, 255, 0.8),
+      rgba(255, 255, 255, 0) 70%
+    );
+    top: 0;
+    left: -100px;
+    animation: shine 5s infinite linear; /* Animation */
+  }
+}
+
+@keyframes shine {
+  0% {
+    left: -100px;
+  }
+  20% {
+    left: 100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
