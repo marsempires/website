@@ -7,7 +7,6 @@ import Galaxy from '@/components/galaxy'
 import InformationPanel from '@/components/information-panel'
 import { Mars } from '@/components/mars'
 import { Canvas } from '@react-three/fiber'
-import { DepthOfField, EffectComposer, N8AO } from '@react-three/postprocessing'
 import Image from 'next/image'
 import { Color } from 'three'
 
